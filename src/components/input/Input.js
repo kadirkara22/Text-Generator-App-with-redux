@@ -1,6 +1,19 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeCount } from '../../redux/paragraphsSlice'
 import "./input.css"
 const Input = () => {
+
+    const items = useSelector(state => state.paragraphs.items)
+    const count = useSelector(state => state.paragraphs.count)
+
+    const dispatch = useDispatch();
+
+    const handleChange = (number) => {
+
+        dispatch(changeCount(number))
+    }
+
     return (
 
         <form className="form-inline">
@@ -8,7 +21,7 @@ const Input = () => {
                 <label>Paragraphs</label>
 
                 <div >
-                    <input className="number" type="number"></input>
+                    <input className="number" type="number" value={count} onChange={(e) => handleChange(e.target.value)} ></input>
                 </div>
             </div>
             <div className="form-group">

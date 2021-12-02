@@ -1,4 +1,4 @@
-.text {
+.paragraf {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #303030;
@@ -11,7 +11,7 @@
   padding: 60px 35px;
 }
 @media (min-width: 576px) {
-  .text {
+  .paragraf {
     padding: 4rem rem 2rem;
   }
 }
