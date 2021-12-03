@@ -1,11 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeCount } from '../../redux/paragraphsSlice'
+import { changeCount, changeHtml } from '../../redux/paragraphsSlice'
 import "./input.css"
 const Input = () => {
 
     const items = useSelector(state => state.paragraphs.items)
     const count = useSelector(state => state.paragraphs.count)
+    const html = useSelector(state => state.paragraphs.html)
+
 
     const dispatch = useDispatch();
 
@@ -13,7 +15,10 @@ const Input = () => {
 
         dispatch(changeCount(number))
     }
+    const handleHtml = (item) => {
 
+        dispatch(changeHtml(item))
+    }
     return (
 
         <form className="form-inline">
@@ -28,9 +33,9 @@ const Input = () => {
                 <label>Include HTML</label>
 
                 <div>
-                    <select className="select">
-                        <option value="html">Yes</option>
+                    <select className="select" value={html} onChange={(e) => handleHtml(e.target.value)}>
                         <option value="text">No</option>
+                        <option value="html">Yes</option>
                     </select>
                 </div>
             </div>

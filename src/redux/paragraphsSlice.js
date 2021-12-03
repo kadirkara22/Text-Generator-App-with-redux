@@ -6,7 +6,8 @@ export const paragraphsSlice = createSlice({
     name: "paragraphs",
     initialState: {
         items: dataTexts,
-        count: 4
+        count: 4,
+        html: "text"
     },
     reducers: {
         firstPage: (state, action) => {
@@ -18,10 +19,13 @@ export const paragraphsSlice = createSlice({
         showPram: (state, action) => {
             state.items = dataTexts
             state.items = state.count > 0 ? state.items.slice(0, state.count) : [state.count = 1]
+        },
+        changeHtml: (state, action) => {
+            state.html = action.payload
         }
     },
 
 })
 
-export const { firstPage, changeCount, showPram } = paragraphsSlice.actions;
+export const { firstPage, changeCount, showPram, changeHtml } = paragraphsSlice.actions;
 export default paragraphsSlice.reducer;
